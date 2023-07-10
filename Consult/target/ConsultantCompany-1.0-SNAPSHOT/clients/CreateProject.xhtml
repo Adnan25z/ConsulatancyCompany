@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProjectsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2" cellpadding = "10" cellspacing = "1" border = "1">
+                    <h:outputLabel value="#{bundle.CreateProjectsLabel_projectName}" for="projectName" />
+                    <h:inputText id="projectName" value="#{projectsController.selected.projectName}" title="#{bundle.CreateProjectsTitle_projectName}" />
+                    <h:outputLabel value="#{bundle.CreateProjectsLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{projectsController.selected.description}" title="#{bundle.CreateProjectsTitle_description}" />
+                    <h:outputLabel value="#{bundle.CreateProjectsLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{projectsController.selected.status}" title="#{bundle.CreateProjectsTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreateProjectsLabel_recruiters}" for="recruiters" />
+                    <h:selectOneMenu id="recruiters" value="#{projectsController.selected.recruiters}" title="#{bundle.CreateProjectsTitle_recruiters}" >
+                        <f:selectItems value="#{usersController.recruiters}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{projectsController.create}" value="#{bundle.CreateProjectsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{projectsController.prepareList}" value="#{bundle.CreateProjectsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/faces/clients/ClientMenu" value="#{bundle.CreateProjectsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

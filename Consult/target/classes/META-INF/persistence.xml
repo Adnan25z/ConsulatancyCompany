@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <!-- Define Persistence Unit -->
+  <persistence-unit name="my_persistence_unit" transaction-type="JTA">
+    <!--<jta-data-source>jdbc/consultant-company</jta-data-source>-->
+    <jta-data-source>jdbc/consultant-company</jta-data-source>
+    <class>com.orax.consultantcompany.entities.Billables</class>
+    <class>com.orax.consultantcompany.entities.Users</class>
+    <class>com.orax.consultantcompany.entities.Projects</class>
+    <class>com.orax.consultantcompany.entities.Address</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+  </persistence-unit>
+</persistence>

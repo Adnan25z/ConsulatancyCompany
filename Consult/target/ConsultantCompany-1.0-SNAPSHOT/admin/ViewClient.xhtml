@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUsersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUsersLabel_id}"/>
+                    <h:outputText value="#{usersController.selected.id}" title="#{bundle.ViewUsersTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_fname}"/>
+                    <h:outputText value="#{usersController.selected.fname}" title="#{bundle.ViewUsersTitle_fname}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_lname}"/>
+                    <h:outputText value="#{usersController.selected.lname}" title="#{bundle.ViewUsersTitle_lname}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_phone}"/>
+                    <h:outputText value="#{usersController.selected.phone}" title="#{bundle.ViewUsersTitle_phone}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_email}"/>
+                    <h:outputText value="#{usersController.selected.email}" title="#{bundle.ViewUsersTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_password}"/>
+                    <h:outputText value="#{usersController.selected.password}" title="#{bundle.ViewUsersTitle_password}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_role}"/>
+                    <h:outputText value="#{usersController.selected.role}" title="#{bundle.ViewUsersTitle_role}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_appgroup}"/>
+                    <h:outputText value="#{usersController.selected.appgroup}" title="#{bundle.ViewUsersTitle_appgroup}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_active}"/>
+                    <h:outputText value="#{usersController.selected.active}" title="#{bundle.ViewUsersTitle_active}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_remarks}"/>
+                    <h:outputText value="#{usersController.selected.remarks}" title="#{bundle.ViewUsersTitle_remarks}"/>
+                    <h:outputText value="#{bundle.ViewUsersLabel_billingAddress}"/>
+                    <h:outputText value="#{usersController.selected.billingAddress}" title="#{bundle.ViewUsersTitle_billingAddress}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usersController.destroyAndView}" value="#{bundle.ViewUsersDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUsersEditLink}"/>
+                <br />
+                <h:commandLink action="#{usersController.prepareCreate}" value="#{bundle.ViewUsersCreateLink}" />
+                <br />
+                <h:commandLink action="#{usersController.prepareList}" value="#{bundle.ViewUsersShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/admin/mainmenu" value="#{bundle.ViewUsersIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
