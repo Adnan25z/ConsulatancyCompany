@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Consultant Company</title>
+    </h:head>
+    <h:body>
+
+        <h1>
+            <h:outputText value="Consultant Company Ltd"/>
+        </h1>
+
+        <h2>
+            <h:outputText value="Consultant Main Menu"/>
+        </h2>
+        <ol>
+            <li>
+                <h:outputLink value="AllProjects.xhtml">All Running Projects</h:outputLink>
+            </li>
+            <br/>
+            <li>
+                <h:outputLink value="AllBills.xhtml">All Projects Bills</h:outputLink>
+            </li>
+            <br/>
+        </ol>
+
+        <h:form>
+            Click  &nbsp; <h:commandButton value="Logout" action="#{myLoginManagedBean.logoutResult()}"/>           
+        </h:form>
+
+    </h:body>
+</html>

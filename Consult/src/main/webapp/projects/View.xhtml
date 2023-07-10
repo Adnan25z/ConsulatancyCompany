@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProjectsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProjectsLabel_id}"/>
+                    <h:outputText value="#{projectsController.selected.id}" title="#{bundle.ViewProjectsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewProjectsLabel_projectName}"/>
+                    <h:outputText value="#{projectsController.selected.projectName}" title="#{bundle.ViewProjectsTitle_projectName}"/>
+                    <h:outputText value="#{bundle.ViewProjectsLabel_description}"/>
+                    <h:outputText value="#{projectsController.selected.description}" title="#{bundle.ViewProjectsTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewProjectsLabel_status}"/>
+                    <h:outputText value="#{projectsController.selected.status}" title="#{bundle.ViewProjectsTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewProjectsLabel_client}"/>
+                    <h:outputText value="#{projectsController.selected.client}" title="#{bundle.ViewProjectsTitle_client}"/>
+                    <h:outputText value="#{bundle.ViewProjectsLabel_recruiters}"/>
+                    <h:outputText value="#{projectsController.selected.recruiters}" title="#{bundle.ViewProjectsTitle_recruiters}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{projectsController.destroyAndView}" value="#{bundle.ViewProjectsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProjectsEditLink}"/>
+                <br />
+                <h:commandLink action="#{projectsController.prepareCreate}" value="#{bundle.ViewProjectsCreateLink}" />
+                <br />
+                <h:commandLink action="#{projectsController.prepareList}" value="#{bundle.ViewProjectsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProjectsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

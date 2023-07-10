@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBillablesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBillablesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{billablesController.selected.id}" title="#{bundle.EditBillablesTitle_id}" required="true" requiredMessage="#{bundle.EditBillablesRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditBillablesLabel_startDate}" for="startDate" />
+                    <h:inputText id="startDate" value="#{billablesController.selected.startDate}" title="#{bundle.EditBillablesTitle_startDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditBillablesLabel_endDate}" for="endDate" />
+                    <h:inputText id="endDate" value="#{billablesController.selected.endDate}" title="#{bundle.EditBillablesTitle_endDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditBillablesLabel_hours}" for="hours" />
+                    <h:inputText id="hours" value="#{billablesController.selected.hours}" title="#{bundle.EditBillablesTitle_hours}" />
+                    <h:outputLabel value="#{bundle.EditBillablesLabel_hourlyRate}" for="hourlyRate" />
+                    <h:inputText id="hourlyRate" value="#{billablesController.selected.hourlyRate}" title="#{bundle.EditBillablesTitle_hourlyRate}" />
+                    <h:outputLabel value="#{bundle.EditBillablesLabel_billableHourlyRate}" for="billableHourlyRate" />
+                    <h:inputText id="billableHourlyRate" value="#{billablesController.selected.billableHourlyRate}" title="#{bundle.EditBillablesTitle_billableHourlyRate}" />
+                    <h:outputLabel value="#{bundle.EditBillablesLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{billablesController.selected.description}" title="#{bundle.EditBillablesTitle_description}" />
+                    <h:outputLabel value="#{bundle.EditBillablesLabel_artifacts}" for="artifacts" />
+                    <h:inputTextarea rows="4" cols="30" id="artifacts" value="#{billablesController.selected.artifacts}" title="#{bundle.EditBillablesTitle_artifacts}" />
+                    <h:outputLabel value="#{bundle.EditBillablesLabel_project}" for="project" />
+                    <h:selectOneMenu id="project" value="#{billablesController.selected.project}" title="#{bundle.EditBillablesTitle_project}" >
+                        <f:selectItems value="#{projectsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditBillablesLabel_consultant}" for="consultant" />
+                    <h:selectOneMenu id="consultant" value="#{billablesController.selected.consultant}" title="#{bundle.EditBillablesTitle_consultant}" >
+                        <f:selectItems value="#{usersController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{billablesController.update}" value="#{bundle.EditBillablesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditBillablesViewLink}"/>
+                <br />
+                <h:commandLink action="#{billablesController.prepareList}" value="#{bundle.EditBillablesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditBillablesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

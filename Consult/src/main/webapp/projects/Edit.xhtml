@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditProjectsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditProjectsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{projectsController.selected.id}" title="#{bundle.EditProjectsTitle_id}" required="true" requiredMessage="#{bundle.EditProjectsRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditProjectsLabel_projectName}" for="projectName" />
+                    <h:inputText id="projectName" value="#{projectsController.selected.projectName}" title="#{bundle.EditProjectsTitle_projectName}" />
+                    <h:outputLabel value="#{bundle.EditProjectsLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{projectsController.selected.description}" title="#{bundle.EditProjectsTitle_description}" />
+                    <h:outputLabel value="#{bundle.EditProjectsLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{projectsController.selected.status}" title="#{bundle.EditProjectsTitle_status}" />
+                    <h:outputLabel value="#{bundle.EditProjectsLabel_client}" for="client" />
+                    <h:selectOneMenu id="client" value="#{projectsController.selected.client}" title="#{bundle.EditProjectsTitle_client}" >
+                        <f:selectItems value="#{usersController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditProjectsLabel_recruiters}" for="recruiters" />
+                    <h:selectOneMenu id="recruiters" value="#{projectsController.selected.recruiters}" title="#{bundle.EditProjectsTitle_recruiters}" >
+                        <f:selectItems value="#{usersController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{projectsController.update}" value="#{bundle.EditProjectsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditProjectsViewLink}"/>
+                <br />
+                <h:commandLink action="#{projectsController.prepareList}" value="#{bundle.EditProjectsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditProjectsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

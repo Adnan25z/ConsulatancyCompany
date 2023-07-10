@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProjectsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListProjectsEmpty}" rendered="#{projectsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{projectsController.items.rowCount > 0}">
+                    <h:outputText value="#{projectsController.pagination.pageFirstItem + 1}..#{projectsController.pagination.pageLastItem + 1}/#{projectsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{projectsController.previous}" value="#{bundle.Previous} #{projectsController.pagination.pageSize}" rendered="#{projectsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{projectsController.next}" value="#{bundle.Next} #{projectsController.pagination.pageSize}" rendered="#{projectsController.pagination.hasNextPage}"/>&nbsp;
+
+                    <h:dataTable value="#{projectsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjectsTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjectsTitle_projectName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.projectName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjectsTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjectsTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjectsTitle_client}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.client.fname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProjectsTitle_recruiters}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.recruiters.toString()}" style="text-align: justify"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{projectsController.prepareView}" value="#{bundle.ListProjectsViewLink}"/>
+                        </h:column>
+
+                    </h:dataTable>
+
+                </h:panelGroup>
+                <br />
+                <br />
+                <br />
+                <h:link outcome="/faces/recruiters/RecruiterMenu" value="#{bundle.ListProjectsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
