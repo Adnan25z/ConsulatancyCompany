@@ -3,6 +3,7 @@
 ## Introduction
 
 This project is a secure and scalable web application developed using Java EE8, Maven, and NetBeans IDE. It is designed to facilitate the operations of a consultancy company, providing various features for managing client interactions, project workflows, and administrative tasks.
+
 ![Gameplay Image](image1.png)
 
 ## Table of Contents
